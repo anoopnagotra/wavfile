@@ -1,0 +1,20 @@
+{% load static %}
+<!-- cover pic start -->
+<div class="cover-pic">
+   {% for userData in profile%}
+     {% if userData.9 == 'media/no-user-image.gif' %}
+         <img src="{% static 'images/cover-img5.jpg' %}" alt="">
+     {% elif userData.9 == None %}
+         <img src="{% static 'images/cover-img5.jpg' %}" alt="">
+     {% elif userData.9 == '' %}
+         <img src="{% static 'images/cover-img5.jpg' %}" alt="">
+     {% else %}
+        <a class="example-image-link" href="/media/{{userData.9}}" data-lightbox="example-set" data-title="Cover Image">
+        <img src="/media/{{userData.9}}">
+     {% endif %}
+     {% if userData.14 == user.id %}
+        <a href="" data-cropType="cover" class="edit-cover-img image_circle_new" data-toggle="modal" data-target="#cover-image-popup"><i class="fa fa-camera" aria-hidden="true"></i></a>
+     {% endif %}
+   {% endfor %}
+</div>
+<!-- cover pic end -->

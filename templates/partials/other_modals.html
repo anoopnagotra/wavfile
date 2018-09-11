@@ -1,0 +1,189 @@
+{% load static %}
+<!--enter question answer popup start-->
+   <div id="enter-question-answer" class="modal fade common-popup" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                <!-- <h4 class="modal-title">Enter your question</h4> -->
+             </div>
+             <div class="modal-body">
+                <form method="post" action="{% url 'addQuestion' %}" id="form-questionupdate" enctype="multipart/form-data">
+                   {% csrf_token %}
+                   <div class="answer-form-data"></div>
+                   <div class="form-group text-right popup-btn-box">
+                      <input type="submit" value="Submit" class="btn">
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+   </div>
+<!--enter question answer popup end-->
+<!--enter question popup start-->
+   <div id="enter-question" class="modal fade common-popup" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                <!-- <h4 class="modal-title">Enter your question</h4> -->
+             </div>
+             <div class="modal-body">
+                <form method="post" action="{% url 'addQuestion' %}" id="form-questions" enctype="multipart/form-data">
+                   {% csrf_token %}
+                   <input type="hidden" name="ques_id" class="que-id">
+                   <div class="form-group">
+                      <input type="text" name="title" placeholder="Enter your question" class="que-title form-control question-class-model">
+                   </div>
+                   <div class="form-group">
+                      <textarea name="description" class="que-description form-control question-class-model" rows="3" id="comment" placeholder="Type additional comments"></textarea>
+                      <div class="upload-media-icns">
+                         <input class="media-upload" id="description-media-img" type="file" name="myfile" style="display:none">
+                         <!-- <a href="javascript:;"><i class="fa fa-volume-up media-upload-btn"></i></a> -->
+                         <a href="javascript:;"><i class="fa fa-camera media-upload-btn"></i></a>
+                         <a href="javascript:;"><i class="fa fa-video-camera media-upload-btn"></i></a>
+                      </div>
+                      <div class="uploaded-cntnt">
+                        <!-- <img id="description-media-img-tag" src="" width="100px"> -->
+                        <label class="upload-img-name" id="file-name"></label>
+                      </div>
+                   </div>
+                   <div class="form-group answer-options">
+                      <span class="count-alpha">A.</span>
+                      <input type="hidden" name="option_id1" class="option_id1">
+                      <input name="option_text1" type="text" placeholder="Option" class="que-option1 form-control question-class-model">
+                      <div class="upload-media-icns">
+                         <input class="media-upload-option-1" type="file" name="option_media_1" id="option_media_1" style="display:none">
+                         <a href="javascript:;"><i class="fa fa-camera media-upload-option-1-btn"></i></a>
+                         <a href="javascript:;"><i class="fa fa-video-camera media-upload-option-1-btn"></i></a>
+                      </div>
+                      <div class="uploaded-cntnt">
+                        <!-- <img id="description-media-img-tag" src="" width="100px"> -->
+                        <label class="upload-img-name" id="option_media_1_text"></label>
+                      </div>
+                   </div>
+                   <div class="form-group answer-options">
+                      <span class="count-alpha">B.</span>
+                      <input type="hidden" name="option_id2" class="option_id2">
+                      <input name="option_text2" type="text" placeholder="Option" class="que-option2 form-control question-class-model">
+                      <div class="upload-media-icns">
+                         <input class="media-upload-option-2" type="file" name="option_media_2" id="option_media_2" style="display:none">
+                         <a href="javascript:;"><i class="fa fa-camera media-upload-option-2-btn"></i></a>
+                         <a href="javascript:;"><i class="fa fa-video-camera media-upload-option-2-btn"></i></a>
+                      </div>
+                      <div class="uploaded-cntnt">
+                        <!-- <img id="description-media-img-tag" src="" width="100px"> -->
+                        <label class="upload-img-name" id="option_media_2_text"></label>
+                      </div>
+                   </div>
+                   <div class="form-group answer-options">
+                      <span class="count-alpha">C.</span>
+                      <input type="hidden" name="option_id3" class="option_id3">
+                      <input name="option_text3" type="text" placeholder="Option" class="que-option3 form-control question-class-model">
+                      <div class="upload-media-icns">
+                         <input class="media-upload-option-3" type="file" name="option_media_3" id="option_media_3" style="display:none">
+                         <a href="javascript:;"><i class="fa fa-camera media-upload-option-3-btn"></i></a>
+                         <a href="javascript:;"><i class="fa fa-video-camera media-upload-option-3-btn"></i></a>
+                      </div>
+                      <div class="uploaded-cntnt">
+                        <!-- <img id="description-media-img-tag" src="" width="100px"> -->
+                        <label class="upload-img-name" id="option_media_3_text"></label>
+                      </div>
+                   </div>
+                   <div class="form-group text-right popup-btn-box">
+                      <input type="submit" value="Submit" class="btn">
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+   </div>
+   <!--enter question popup end-->
+<!--answer popup popup start-->
+<div id="answer-popup" class="modal fade common-popup" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+            <!-- <h4 class="modal-title">Enter your question</h4> -->
+         </div>
+         <div class="modal-body">
+            <form method="post" action="{% url 'submitAnswer' %}" id="form-answers">
+               {% csrf_token %}
+                  <div class="answer-model"> </div>
+                  <div class="form-group text-right popup-btn-box">
+                     <div class="like-dislike">
+                        <!-- <a href="" class="like-thumb">20 Likes <i class="em em-slightly_smiling_face"></i></a>
+                        <a href="" class="dislike-thumb">10 Dislikes <i class="em em-unamused"></i></a> -->
+                     </div>
+                     <input type="submit" value="Submit" class="btn">
+                  </div>
+            </form>
+         </div>
+      </div>
+    </div>
+</div>
+   <!--answer popup end-->
+
+
+<div id="following-popup" class="modal fade common-popup" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+         <!-- <h4 class="modal-title">Enter your question</h4> -->
+         </div>
+         <div class="modal-body" id ="append-data">
+            <h3 class="modalLbl"></h3>
+            <div class="search-listing-cntnt append-data" id="followData">
+                  <!-- <div class="append-data"> </div> -->
+            </div>
+            <!-- <div class="lMoreData"></div> -->
+           </div>
+           <center>
+               <button class="btn btn-danger loadMore" data-type="">Load More</button>
+           </center>
+      </div>
+   </div>
+</div>
+<!--following popup end-->
+<script>
+   $(".srch-top-input").focus(function(){
+      $(this).closest('.hdr-right').addClass("srch-open");
+   });
+   $(".srch-top-input").focusout(function(){
+      $(this).closest('.hdr-right').removeClass("srch-open");
+   });
+
+   function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#description-media-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#description-media-img").change(function(){
+      //   readURL(this);
+        $("#file-name").text(this.files[0].name);
+    });
+
+    $("#option_media_1").change(function(){
+      //   readURL(this);
+        $("#option_media_1_text").text(this.files[0].name);
+    });
+    $("#option_media_2").change(function(){
+      //   readURL(this);
+        $("#option_media_2_text").text(this.files[0].name);
+    });
+    $("#option_media_3").change(function(){
+      //   readURL(this);
+        $("#option_media_3_text").text(this.files[0].name);
+    });
+</script>

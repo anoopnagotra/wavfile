@@ -1,0 +1,49 @@
+<!-- all posts feed start-->
+{% load static %}
+<div class="all-post-box">
+   {% for question in question %}
+      {% if question.11 == None %}
+         <div class="inner-box-white post">
+            <div class="post-header">
+               <a href="/{{question.4}}/dashboard/">
+                  {% if question.7 == 'media/no-user-image.gif' %}
+                    <img src="{% static 'images/user3.jpg' %}" alt="" class="post-user-img">
+                  {% elif question.7 == None %}
+                    <img src="{% static 'images/user3.jpg' %}" alt="" class="post-user-img">
+                  {% elif question.7 == '' %}
+                    <img src="{% static 'images/user3.jpg' %}" alt="" class="post-user-img">
+                  {% else %}
+                    <img src="/media/{{question.7}}/" alt="" class="post-user-img">
+                  {% endif %}
+               </a>
+                  <span>{{question.3}}</span>
+               <a href="/{{question.4}}/dashboard/">
+                  {{question.5|capfirst}}
+               </a> asked:
+            </div>
+            <div class="post-cntnt">
+            {% if question.4 != loginUserId %}
+                 {% if question.8 == 1 %}
+                   <a href="/questions/{{question.0}}/detail/">{{question.1}}</a>
+                 {% else %}
+                 <a href="" data-qesid="{{question.0}}" class="get-question-option" data-toggle="modal" data-target="#answer-popup">{{question.1}}</a>
+                 {% endif %}
+            {% else %}
+                   <a href="/questions/{{question.0}}/detail/">{{question.1}}</a>
+            {% endif %}
+               <!-- <a href="javascript:;">{{question.1}}</a> -->
+            </div>
+            <div class="post-footer">
+               <span><i class="fa fa-comments"></i> {{question.10}}</span>
+               <span class="votes-link">{{question.9}} votes</span>
+               {% if question.4 != loginUserId %}
+                  <a href="" data-qesid="{{question.0}}" class="post-answr-btn get-question-option" data-toggle="modal" data-target="#answer-popup">Answer</a>
+               {% endif %}
+            </div>
+         </div>
+      {% endif %}
+   {%empty%}
+   <p>Oops, no record found</p>
+   {% endfor %}
+</div>
+<!-- all posts feed end -->

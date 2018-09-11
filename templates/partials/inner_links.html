@@ -1,0 +1,109 @@
+<!--main inner links start -->
+{% load static %}
+<div class="main-nav inner-dtail-page">
+   <div class="lft-main-nav-links">
+      <div class="main-nav-links" title="Get Following List">
+        {% for profie in profile %}
+         <a data-uid="{{ profie.0 }}" data-flag="1" href="javascript:;" class="followings_followers">
+            Following
+            <span id="follower-count">{{followcount}}</span>
+         </a>
+         {% endfor %}
+      </div>
+      <div class="main-nav-links" title="Get Follower List">
+        {% for profie in profile %}
+         <a data-uid="{{profie.0}}" data-flag="0" href="javascript:;" class="followings_followers">
+            Follower
+            <span id="following-count">{{followingcount}}</span>
+         </a>
+         {% endfor %}
+      </div>
+   </div>
+   <div class="user-lft-img center-user inner-dtail">
+      <div class="user-img">
+        {% for userData in profile%}
+            {% if userData.8 == 'media/no-user-image.gif' %}
+                <img src="{% static 'images/user3.jpg' %}" alt="">
+            {% elif userData.8 == None %}
+                <img src="{% static 'images/user3.jpg' %}" alt="">
+            {% elif userData.8 == '' %}
+                <img src="{% static 'images/user3.jpg' %}" alt="">
+            {% else %}
+               <a class="example-image-link" href="/media/{{userData.8}}" data-lightbox="example-set" data-title="Profile Image">
+               <img src="/media/{{userData.8}}" alt=""> </a>
+            {% endif %}
+            {% if userData.14 == user.id %}
+              <a href="" data-cropType="profile" class="main-edit edit_button image_circle_new" data-toggle="modal" data-target="#profile-image-popup"><i class="fa fa-camera" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if userData.1 == '' %}
+              <p><a href="/{{userData.0}}/dashboard/">{{user.username|capfirst}}</a></p>
+            {% else %}
+              <p><a href="/{{userData.0}}/dashboard/">{{userData.1|capfirst}}</a></p>
+            {% endif %}
+         {% endfor %}
+      </div>
+   </div>
+   <div class="rght-main-nav-links">
+      <div class="main-nav-links" title="Qustions posted by User">
+        {% for profie in profile %}
+         <a href="/questions/{{profie.0}}/details/">Questions <span id="question-count">{{questioncount}}</span></a>
+        {% endfor %}
+      </div>
+      <div class="main-nav-links" title="Qustions answered by User">
+        {% for profie in profile %}
+          <a href="/answers/{{profie.0}}/list/">Answers <span id="answer-count">{{answerCount}}</span></a>
+        {% endfor %}
+      </div>
+   </div>
+</div>
+<!--main inner nav links end-->
+
+<!-- profile edit Image start  -->
+<div id="profile-image-popup" class="modal fade common-popup" role="dialog">
+   <div class="modal-dialog">
+   <!-- Modal content-->
+   <div class="modal-content">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+       <!-- <h4 class="modal-title">Enter your question</h4> -->
+    </div>
+    <div class="modal-body">
+         <div class="form-group answer-options background">
+             <h4>Edit Profile Photo</h4>
+         </div>
+          <input type="file" name="image" id="file_crop" class="imputFileType" accept="image/*">
+       </div>
+    </div>
+   </div>
+</div>
+
+<!-- MODAL TO CROP THE IMAGE -->
+<div class="modal fade common-popup" id="modalCrop" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="fa fa-close"></i>
+        </button>
+        <h4 class="modal-title">Crop the photo</h4>
+      </div>
+      <div class="modal-body">
+        <img src="" id="image" style="max-width: 100%;">
+      </div>
+      <div class="modal-footer">
+        <!-- <div class="btn-group pull-left" role="group">
+          <button type="button" class="btn btn-default js-zoom-in">
+            <span class="glyphicon glyphicon-zoom-in"></span>
+          </button>
+          <button type="button" class="btn btn-default js-zoom-out">
+            <span class="glyphicon glyphicon-zoom-out"></span>
+          </button>
+        </div> -->
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button> -->
+        <button type="button" class="btn post-answr-btn js-crop-and-upload">Crop and upload</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- profile edit Image  -->

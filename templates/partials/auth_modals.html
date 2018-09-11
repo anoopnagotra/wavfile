@@ -1,0 +1,160 @@
+<!--THIS SECTION ONLY WORKS IN MOBILE - THIS IS THE FORMS WHAT SHOWS IN MOBILE WHIEL YOU CLICK ON THE LOGIN AND REGISTER-->
+<!-- signup modal start -->
+<div id="signupModal" class="modal fade home-modal" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="uk-grid">
+               <div class="uk-width-8-10 uk-width-large-4-10">
+                  <div class="minilogo">
+                     <a href="/">W</a>
+                  </div>
+               </div>
+               <div class="uk-width-2-10 uk-hidden-large">
+                  <a href="javascript:void(0)" class="popclose uk-modal-close" data-dismiss="modal">
+                  <i class="fa fa-close"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <div id="SIGNUP-mob" class="middleblock">
+            <form action="/signup/" method="post" id="form-signup1">
+            <div class="form-block">
+              {% csrf_token %}
+              <div class="form-head">
+                  Sign up to ask and answer the age-old
+                  question : “What Should I do?”
+                  <div class="already-acc-box">
+                     Already have an account? <a href="javascript:;" data-toggle="modal" data-target="#loginModal" class="mdlLogin1">Sign in!</a>
+
+                  </div>
+               </div>
+               <div class="form-row">
+                  <input name="fullname" type="text" placeholder="Full Name">
+                  <i class="fa fa-certificate"></i>
+               </div>
+               <div class="form-row">
+                  <input name="email" type="text" placeholder="Email">
+                  <i class="fa fa-envelope"></i>
+               </div>
+               <div class="form-row">
+                  <input name="password1" type="password" placeholder="Password">
+                  <i class="fa fa-lock"></i>
+               </div>
+               <div class="form-row">
+                  <button type="submit" class="btn-primary full-width btn-large">
+                  SIGN UP <i class="fa fa-arrow-right"></i>
+                  </button>
+               </div>
+               <div class="form-row full-width uk-float-left uk-margin-top">
+                  <label class="termsofuse">
+                  By signing up, you agree to our terms of <br>
+                  <a href="#">Service and Privacy Policy</a>
+                  </label>
+               </div>
+            </div>
+          </form>
+         </div>
+      </div>
+   </div>
+</div>
+<!--Sign up popup end-->
+
+<!--Login popup start-->
+<div id="loginModal" class="modal fade home-modal" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="uk-grid">
+               <div class="uk-width-8-10 uk-width-large-4-10">
+                  <div class="minilogo">
+                     <a href="/">W</a>
+                  </div>
+               </div>
+               <div class="uk-width-2-10 uk-hidden-large">
+                  <a href="" class="popclose uk-modal-close" data-dismiss="modal">
+                  <i class="fa fa-close"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <div id="SIGNIN-mob" class="middleblock">
+            <form action="/login/" method="post" id="form-login1">
+             {% csrf_token %}
+            <div class="form-block">
+               <div class="form-head">Login</div>
+               <div class="form-row">
+                  <input name="username" type="email" placeholder="Username or Email">
+                  <i class="fa fa-envelope"></i>
+               </div>
+               <div class="form-row">
+                  <input name="password" type="password" placeholder="Password">
+                  <i class="fa fa-lock"></i>
+               </div>
+               <div class="form-row">
+                  <input type="submit" class="btn-primary full-width btn-large" value="Login">
+               </div>
+               <div class="form-row uk-float-left full-width">
+                  <a  onclick=\"$('#loginModal').modal('hide');$('#forgotPassModal').modal('show');\" href="javascript:void(0)" id="forgot-pass-mb-btn" class="popopen loginbtn mdlCls forgot-pass-btn" data-toggle="modal" data-target="#forgotPassModal">Forgot Password?</a>
+               </div>
+               <div class="already-acc-box">
+                  No account yet? <a href="" data-toggle="modal" data-target="#signupModal" class="mdlSignUp">Sign up!</a>
+               </div>
+            </div>
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="ftr-links-custm ftr-links-custm-popup">
+      <div class="about-us about-us-left"><a href="/pages/about/">About</a></div>
+      <div class="about-us about-us-center"><a href="/pages/term-of-service/">Terms of Service </a></div>
+      <div class="about-us about-us-right"><a href="/pages/privacy-policy/">Privacy Policy </a></div>
+   </div>
+</div>
+<!--mobile login popup end-->
+
+<!--forgot pass mobile popup start-->
+<div id="forgotPassModal" class="modal fade home-modal" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="uk-grid">
+               <div class="uk-width-8-10 uk-width-large-4-10">
+                  <div class="minilogo">
+                     <a href="/">W</a>
+                  </div>
+               </div>
+               <div class="uk-width-2-10 uk-hidden-large">
+                  <a href="javascript:void(0)" class="popclose uk-modal-close" data-dismiss="modal">
+                  <i class="fa fa-close"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <div id="password-reset-mob" class="middleblock">
+            <div class="form-block">
+               <div class="form-head">Password Reset</div>
+               <form  action="/forgotpassword/" method="post" id="form-forgotpassword1">
+                  {% csrf_token %}
+               <div class="form-row">
+                  <input name="email" type="email" placeholder="Username or Email">
+                  <i class="fa fa-envelope"></i>
+               </div>
+               <div class="form-row">
+                  <input type="submit" class="btn-primary full-width btn-large" value="Reset your password">
+               </div>
+               <div class="form-row uk-float-left full-width">
+                  <a href="" class="popopen loginbtn mdlLogin" data-toggle="modal" data-target="#loginModal">Login</a>
+               </div>
+            </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="ftr-links-custm ftr-links-custm-popup">
+      <div class="about-us about-us-left"><a href="/pages/about/">About</a></div>
+      <div class="about-us about-us-center"><a href="/pages/term-of-service/">Terms of Service </a></div>
+      <div class="about-us about-us-right"><a href="/pages/privacy-policy/">Privacy Policy </a></div>
+   </div>
+</div>
+<!--forgot pass popup end-->

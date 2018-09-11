@@ -1,0 +1,49 @@
+<!--signup form start-->
+<div id="signup_form" class="middleblock">
+   <form action="/signup/" method="post" id="form-signup">
+      <div class="form-block">
+         {% csrf_token %}
+         <div class="form-head">
+             Sign up to ask and answer the age-old
+             question : “What Should I Do?”
+             <div class="already-acc-box">
+                Already have an account? <a href="javascript:;" class="clsSignIn">Sign in!</a>
+             </div>
+          </div>
+          {% for message in messages %}
+            <span style="color= #fff;font-size= 10px; font-weight= 600;"> {{ message }} </span>
+          {% endfor %}
+         <div class="form-row">
+            <input autocomplete="off" class="noSpecialChars fullname-class" name="fullname" type="text" placeholder="Full Name" required pattern="[0-9a-zA-Z ]*">
+            <i class="fa fa-certificate"></i>
+         </div>
+         <div class="form-row">
+            <input name="email" autocomplete="off" class="email-class" type="text" placeholder="Email">
+            <i class="fa fa-envelope"></i>
+         </div>
+         <div class="form-row">
+            <input name="password1" type="password" autocomplete="off" placeholder="Password">
+            <i class="fa fa-lock"></i>
+         </div>
+         <div class="form-row">
+            <button type="submit" class="btn-primary full-width btn-large signup-btn">
+            SIGN UP <i class="fa fa-arrow-right"></i>
+            </button>
+         </div>
+         <div class="form-row full-width uk-float-left uk-margin-top">
+            <label class="termsofuse">
+            By signing up, you agree to our <br>
+            <a href="/pages/term-of-service">Terms of Service</a> and <a href="/pages/privacy-policy">Privacy Policy​.</a>
+            </label>
+         </div>
+      </div>
+
+   </form>
+</div>
+
+<div class="ftr-links-custm desktop-only">
+     <div class="about-us about-us-left"><a href="/pages/about/">About</a></div>
+      <div class="about-us about-us-center"><a href="/pages/term-of-service/">Terms of Service </a></div>
+      <div class="about-us about-us-right"><a href="/pages/privacy-policy/">Privacy Policy </a></div>
+</div>
+<!--SIGNUP FORM  end-->

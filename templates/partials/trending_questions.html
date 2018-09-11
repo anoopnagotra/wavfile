@@ -1,0 +1,42 @@
+<!--trending questions start-->
+{% load static %}
+<div class="col-xs-12 col-md-3 trending">
+   <h3><i class="fa fa-line-chart"></i> Trending Questions</h3>
+   <div class="trending-cntnt">
+     {% for question in trendingQues %}
+            {% if question.8 >= 1%}
+             <div class="trending-post">
+                {% if question.10 == 1%}
+                     <a href="javascript:;" class="oop-not-allowed">
+                {% else %}
+                     <a href="/{{question.0}}/dashboard/">
+               {% endif %}
+                   <!-- <img src="{% static 'images/user3.jpg' %}" alt="" class="post-user-img"> -->
+                   {% if question.7 == 'media/no-user-image.gif' %}
+                      <img src="{% static 'images/user3.jpg' %}" alt="" class="post-user-img">
+                   {% elif question.7 == None %}
+                      <img src="{% static 'images/user3.jpg' %}" alt="" class="post-user-img">
+                   {% elif question.7 == '' %}
+                      <img src="{% static 'images/user3.jpg' %}" alt="" class="post-user-img">
+                   {% else %}
+                      <img src="/media/{{question.7}}/" alt="" class="post-user-img">
+                   {% endif %}
+                  {{question.2|capfirst}}
+               </a>asked:
+               {% if question.10 == 1%}
+                    <a href="javascript:;" class="post-link oop-not-allowed">{{question.5}}</a>
+               {% else %}
+                   {% if question.9 == 1 or question.1 == user.id  %}
+                      <a href="/questions/{{question.4}}/detail/" class="post-link">{{question.5}}</a>
+                   {% else %}
+                      <a href="javascript:;" class="post-link get-question-option" data-qesid="{{question.4}}" data-toggle="modal" data-target="#answer-popup">{{question.5}}</a>
+                   {% endif %}
+              {% endif %}
+             </div>
+         {% endif %}
+     {% empty %}
+      Oops, no record found
+     {% endfor %}
+   </div>
+</div>
+<!--trending questions end-->

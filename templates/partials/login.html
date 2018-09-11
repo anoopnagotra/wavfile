@@ -1,0 +1,46 @@
+<!-- login start -->
+<div style="display:none;" id="signin_form" class="middleblock">
+ <div class="form-block">
+     <a href="#" class="popcloselg popopen"><i class="fa fa-close"></i></a>
+      <div class="form-head">Sign in</div>
+
+      {% if form.errors %}
+          <p class="error"> sorry, thats not a valid username or password</p>
+      {% endif %}
+
+      <form action="/login/" method="post" id="form-login">
+         {% csrf_token %}
+
+         <div class="form-row">
+             <input type="email" name="username" class="username-login" autocomplete="off" placeholder="Email" required="required">
+             <i class="fa fa-envelope"></i>
+         </div>
+         <div class="form-row">
+             <input type="password" name="password" autocomplete="off" placeholder="Password" required="required">
+             <i class="fa fa-lock"></i>
+         </div>
+         <div class="form-row">
+             <button type="submit" class="btn-primary full-width btn-large">
+             SIGN IN<i class="fa fa-arrow-right"></i>
+             </button>
+         </div>
+         <div class="checkbox check-box">
+       <label><input type="checkbox" name="remember_me" value="1"> Remember me</label> </div>
+        <a href="#password-reset" class="popopen loginbtn frgt_pass password-space">Forgot Password?</a>
+
+
+
+         <div class="already-acc-box">
+            No account yet? <a href="">Sign up!</a>
+         </div>
+      </form>
+      <!-- <div class="social-login">
+         <p>or login with</p>
+          <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa fa-google"></i></a>
+          <a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook"></i></a>
+      </div> -->
+
+  </div>
+
+</div>
+<!-- login end -->

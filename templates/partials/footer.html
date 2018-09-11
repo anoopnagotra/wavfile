@@ -1,0 +1,17 @@
+<!-- Footer start-->
+<footer>
+  <div class="container">
+    <ul>
+      {% if user.is_authenticated %}
+        <li><a href="/dashboard">Home</a></li>
+      {% else %}
+        <li><a href="/">Home</a></li>
+      {% endif %}
+      <li><a href="/pages/about">About</a></li>
+      <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <span>© 2018 WSID. All Rights Reserved</span>
+  </div>
+</footer>
+<!-- Footer end-->

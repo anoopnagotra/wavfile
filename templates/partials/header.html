@@ -1,0 +1,20 @@
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+<!-- header start -->
+<header>
+   <div class="container">
+      <div class="logo"><a href="{% url 'dashboard' %}">WSID</a></div>
+      <div class="wsid-box" title ="Add Questions"><a href="" data-toggle="modal" data-target="#enter-question">What should I do?</a></div>
+      <div class="hdr-right">
+        <span><a href="/dashboard/"><i class="fa fa-user"></i></a></span>
+         <span><a href="/setting/privacysetting/"><i class="fa fa-cog"></i></a></span>
+         <span class="search-top">
+            <form name ="myform" method="get" action="{% url 'usersearch' %}">
+               {% csrf_token %}
+               <input class="srch-top-input" type="text" name="search" placeholder="" required="required"> <i class="fa fa-search"></i>
+            </form>
+         </span>
+         <!-- <span style="color:white; font-weight:500;">{{user.first_name|capfirst}}</span> -->
+      </div>
+   </div>
+</header>
+<!-- header end -->

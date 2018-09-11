@@ -1,0 +1,97 @@
+<!-- left intro start -->
+<div class="col-xs-12 col-md-3 lft-inro">
+   <div class="lft-box-inner user-lft-img">
+      <div class="intro-social-box social-lft-box">
+         {% for profile in profile %}
+            {% if profile.3 %}
+               <p class="intro-social"><a href="{{profile.3}}"><i class="fa fa-facebook"></i></a></p>
+            {% endif %}
+            {% if profile.4 %}
+               <p class="intro-social"><a href="{{profile.4}}"><i class="fa fa-twitter"></i></a></p>
+            {% endif %}
+            {% if profile.5 %}
+               <p class="intro-social"><a href="{{profile.5}}"><i class="fa fa-instagram"></i></a></p>
+            {% endif %}
+         {% endfor %}
+      </div>
+      {% for profile in profile %}
+            <div class="intro-social-box">
+            {% if profile.15 == 1 %}
+              {% if profile.7 %}
+                     <p class="intro-social birth-date"><i class="fa fa-birthday-cake"> </i>
+                     {{profile.7|date:"M-d-Y" }} </p>
+                 {% elif profile.7 == None %}
+                 {% endif %}
+              {% endif %}
+            </div>
+      {% endfor %}
+      <div class="intro-social-box">
+           {% for profile in profile %}
+              {% if profile.13 %}
+                  <p class="intro-social birth-date"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                  {{profile.13}}
+              {% endif %}
+           {% endfor %}
+        </p>
+      </div>
+      <div class="intro-social-box">
+         <p class="intro-social birth-date">
+            <h3>About me
+            {% for profile in profile %}
+              {% if profile.14 == user.id %}
+                    <a href="" class="main-edit" data-toggle="modal" data-target="#about-popup"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+               {% endif %}
+            {% endfor%}
+            </h3>
+         </p>
+         <p class="intro-social birth-date">
+            {% for profile in profile %}
+               {% if profile.6 == '' %}
+                     No comment
+               {% elif profile.6 == None %}
+                     No comment
+               {% else %}
+                  {{profile.6}}
+               {% endif %}
+            {% endfor %}
+         </p>
+      </div>
+      {% if urlUserId != loginUserId %}
+         <div class="intro-social-box">
+            <a data-flag="1" data-uid="{{urlUserId}}" href="#" class="unfollows_class btn-rght-folow followBtn left-follow-btn">Follow <i class="fa fa-user-plus"></i></a>
+         </div>
+      {% endif %}
+   </div>
+</div>
+<!-- left intro end -->
+
+
+<div id="about-popup" class="modal fade common-popup" role="dialog">
+   <div class="modal-dialog">
+   <!-- Modal content-->
+   <div class="modal-content">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+       <!-- <h4 class="modal-title">Enter your question</h4> -->
+    </div>
+    <div class="modal-body">
+       <form method="post" action="/updateAboutMe/" id="form-updateabout">
+             {% csrf_token %}
+            <h3> About Me </h3>
+             <div class="form-group">
+                {% for profile in profile %}
+                  {% if profile.6 == None %}
+                     <textarea name="about_me" class="form-control about_us_area about_us_TextArea " rows="4"  placeholder="About your self" style="width:100% !important;"></textarea>
+                  {% else %}
+                  <textarea name="about_me" class="form-control about_us_area about_us_TextArea" rows="4" placeholder="About your self">{{profile.6}}</textarea>
+                  {% endif %}
+               {% endfor %}
+             </div>
+             <div class="form-group text-right popup-btn-box">
+                <input type="submit" value="Update" class="btn">
+             </div>
+          </form>
+       </div>
+    </div>
+   </div>
+</div>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+{% load static %}
+     {% block pagecontent %}
+
+	<body class="landing">
+
+		<!-- Header -->
+			<header id="header" class="alt skel-layers-fixed">
+				<h1><a href="index.html">Wav File Upload </h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="/">Home</a></li>
+						<!-- <li>
+							<a href="" class="icon fa-angle-down">Layouts</a>
+							<ul>
+								<li><a href="left-sidebar.html">Left Sidebar</a></li>
+								<li><a href="right-sidebar.html">Right Sidebar</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
+								<li>
+									<a href="">Submenu</a>
+									<ul>
+										<li><a href="#">Option 1</a></li>
+										<li><a href="#">Option 2</a></li>
+										<li><a href="#">Option 3</a></li>
+										<li><a href="#">Option 4</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li> -->
+						<li><a href="#"></a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Banner -->
+			<section id="banner" style="padding: 2em 0 !important;">
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper style1">
+				<div class="container">
+          <form action="{% url 'userLogin' %}" method="POST">
+          {% csrf_token %}
+           <div class="container">
+             <label for="uname"><b>Email</b></label>
+             <input type="text" placeholder="Enter Username" name="uname" required>
+
+             <label for="psw"><b>Password</b></label>
+             <input type="password" placeholder="Enter Password" name="psw" required>
+             <br>
+             <button type="submit">Login</button>
+           </div>
+           <div class="container" style="background-color:#f1f1f1">
+           </div>
+          </form>
+				</div>
+			</section>
+    {% endblock %}
