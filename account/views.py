@@ -15,7 +15,7 @@ from django.core.files.storage import FileSystemStorage
 Method:             userProfile
 Developer:          Anoop
 Created Date:       11-09-2018
-Purpose:            Show other user's dashboard
+Purpose:            Show other user's index
 Params:             user_id
 Return:             [user data]
 """
@@ -57,9 +57,17 @@ def userLogin(request):
     else:
         return render(request, 'login.html', {})
 
-
+@login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dashboard(request):
-    return HttpResponse("dashboard")
+    try:
+        fileData = File.objects.all()
+    except File.DoesNotExist:
+        fileData = None
+    context = {
+        "file" : fileData,
+        }
+    return render(request, 'dashboard.html', context)
     # return render(request, 'index.html', {})
 
 """end function userProfile"""
@@ -117,3 +125,9 @@ def fileUpload(request):
         # if 'image' == mediaTpye or 'video' == mediaTpye:
         #     fs = FileSystemStorage()
         return HttpResponse("fileupload")
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
